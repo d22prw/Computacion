@@ -1,0 +1,54 @@
+.tabla,thead{
+	border: 2px solid black;
+}
+
+td{
+	border: 1px solid black;
+}
+.BODY {
+	
+	width: 100%;
+	heigth: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+
+.html{
+	width: 100%;
+	heigth: 100%;
+	
+}
+
+.opciones{
+	height: auto;
+	width: auto;
+	border: 5px solid #0a62c7;
+	border-radius: 30px;
+	padding: 1%;
+	background-color:  #21aaf1 ;
+	font-size: large;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.encabezado{
+	width: 100%;
+	height: 130px;
+	background-image: url("bbva_logo.jpg");
+	background-size: 25%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.atras{
+	width: 100px;
+	height: 100px;
+	background-image: url("atras.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+		margin-left: auto;
+	margin-right: auto;
+
+}

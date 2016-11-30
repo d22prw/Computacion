@@ -1,0 +1,21 @@
+#tabla{
+	border: 1 px solid black;
+}
+BODY {
+	width: 100%;
+	heigth: 100%;
+	background-color: blue;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+html{
+	width: 100%;
+	heigth: 100%;
+}
+
+#encabezado{
+	border: 2 px;
+}
