@@ -13,11 +13,15 @@ app = Flask(__name__,template_folder='Template')
 @app.route('/index')
 @app.route('/')
 def main():
-	#valores_basedatos = db.BBDD.find({})
-	#lista = {}
-	#for valor_db in valores_basedatos:
-	#	lista[valor_db['Cotizacion']]=valor_db
 	return render_template('login.html')
+@app.route('/valores_cotizacion')
+def valores_cotizacion():
+	valores_basedatos = db.BBDD.find({})
+	lista = {}
+	for valor_db in valores_basedatos:
+		lista[valor_db['Cotizacion']]=valor_db
+
+	return render_template('valores_cotizacion.html',lista=lista)
 
 @app.route('/obtiene_sup_umbral', methods=['POST'])
 def obtiene_sup_umbral():
@@ -31,6 +35,7 @@ def obtiene_sup_umbral():
 			print(umbral_pag)
 			dic_sup = {}
 			for datos_umbral in basedatos_umbral:
+				#if(umbral_pag<float(basedatos_umbral['Cotizacion'].replace(',','.'))):
 				if(umbral_pag<float(datos_umbral['Cotizacion'].replace(',','.'))):
 					print(datos_umbral)
 					dic_sup[datos_umbral['Cotizacion']]=datos_umbral
@@ -50,6 +55,7 @@ def media_cotizaciones():
 	if(db_usar == 'Thingspeak'):
 		valores = urllib2.urlopen('https://thingspeak.com/channels/179436/field/1.json')
 		print(valores)
+		#datos_db = ast.literal_eval(str(valores.read()))
 		datos_leidos = valores.read()
 		print(datos_leidos)
 		datos_db = json.loads(datos_leidos)
@@ -58,6 +64,7 @@ def media_cotizaciones():
 		print(datos_db)
 		for datos in datos_db['feeds']:
 			print(datos)
+			#if datos['field1'] != 'Cotizacion':
 			cotizacion_suma = cotizacion_suma + float(datos['field1'].replace(',','.'))
 			n_datos = n_datos +1;
 		media = float(cotizacion_suma/n_datos)
@@ -72,8 +79,11 @@ def login():
 	contrasena = request.form['contrasena']
 	usuariosycontrasenas=[]
 	usuariosycontrasenas = db.users.find({})
+	print(usuariosycontrasenas)
 	userpass= 0
 	for userpass in usuariosycontrasenas:
+	#if((str(usuario)=='admin')and(str(contrasena)=='1234')):
+	#if(existe != None):
 		if((userpass['Usuario']==str(usuario))and(userpass['Contrasena']==str(contrasena))):
 			return render_template('main.html')
 		else:
