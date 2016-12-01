@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-#!/usr/bin/python
 #-*- coding: utf-8-*-
 from pymongo import MongoClient
 import urllib2, json
@@ -14,6 +13,13 @@ app = Flask(__name__,template_folder='Template')
 @app.route('/')
 def main():
 	return render_template('login.html')
+@app.route('/valores_cotizacion')
+def valores_cotizacion():
+	valores_basedatos = db.BBDD.find({})
+	lista = {}
+	for valor_db in valores_basedatos:
+		lista[valor_db['Cotizacion']]=valor_db
+	return render_template('valores_cotizacion.html',lista=lista)
 
 @app.route('/obtiene_sup_umbral', methods=['POST'])
 def obtiene_sup_umbral():
@@ -40,7 +46,7 @@ def media_cotizaciones():
 		cotizacion_suma = 0
 		n_datos = 0
 		for datos in datos_db:
-			cotizacion_suma = cotizacion_suma + float(datos['Cotizacion'].replace('%','').replace(',','.'))
+			cotizacion_suma = cotizacion_suma + float(datos['Cotizacion'].replace(',','.'))
 			n_datos = n_datos+1
 		media = float(cotizacion_suma/n_datos)
 	if(db_usar == 'Thingspeak'):
@@ -58,6 +64,7 @@ def media_cotizaciones():
 			n_datos = n_datos +1;
 		media = float(cotizacion_suma/n_datos)
 	return render_template('cotizacion_media.html', media = media)
+
 @app.route('/obtiene_graficas', methods=['POST'])
 def obtiene_graficas():
 	return render_template('graficas.html')
@@ -68,6 +75,7 @@ def login():
 	contrasena = request.form['contrasena']
 	usuariosycontrasenas=[]
 	usuariosycontrasenas = db.users.find({})
+	print(usuariosycontrasenas)
 	userpass= 0
 	for userpass in usuariosycontrasenas:
 		if((userpass['Usuario']==str(usuario))and(userpass['Contrasena']==str(contrasena))):
@@ -80,7 +88,7 @@ def principal():
 	return render_template('main.html')
 
 if __name__=='__main__':
-	import uuid
-	app.secret_key=str(uuid.uuid4())
+	#import uuid
+	#app.secret_key=str(uuid.uuid4())
 	app.debug=True
 	app.run(host='0.0.0.0',port=80)

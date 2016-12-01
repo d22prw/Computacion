@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML lang="es" style="background-color: #c0d8f4 ;">
+   <HEAD>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   	<link rel="stylesheet" type="text/css" href="../static/style/style.css" />
+	<CENTER><TITLE>COMPUTACIÓN EN RED</TITLE></CENTER>
+   </HEAD>
+   <BODY> 
+   <br>
+   <div class="opciones">
+   	<center> <table class="tabla">
+      <thead>
+        <tr>
+            <th>Cotización</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in lista %}
+        <tr>
+        <td>{{ lista[n]['Cotizacion']}}</td>
+        <td>{{ lista[n]['Fecha']}}</td>
+        <td>{{ lista[n]['Hora']}}</td>
+      </tr>
+        {% endfor %}
+      </tbody>
+    </table></center>
+
+	</div>
+	<br>
+		<a href="http://192.168.226.128/main"><div class="atras">
+	</div></a>
+   </BODY>
+</HTML>
