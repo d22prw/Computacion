@@ -88,7 +88,7 @@ def principal():
 	return render_template('main.html')
 
 if __name__=='__main__':
-	import uuid
-	app.secret_key=str(uuid.uuid4())
+	#import uuid
+	#app.secret_key=str(uuid.uuid4())
 	app.debug=True
 	app.run(host='0.0.0.0',port=80)
