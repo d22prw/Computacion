@@ -13,10 +13,6 @@ app = Flask(__name__,template_folder='Template')
 @app.route('/index')
 @app.route('/')
 def main():
-	#valores_basedatos = db.BBDD.find({})
-	#lista = {}
-	#for valor_db in valores_basedatos:
-	#	lista[valor_db['Cotizacion']]=valor_db
 	return render_template('login.html')
 
 @app.route('/obtiene_sup_umbral', methods=['POST'])
