@@ -40,7 +40,7 @@ while True:
 	print(lista_valores)
 	db.BBDD.insert_one(lista_valores)
 
-	datos_acceso = urllib.urlencode({'key':'V4HTZEVYDN4AQK1A','field1':cotizacion,'field2':umbral})
+	datos_acceso = urllib.urlencode({'key':'V4HTZEVYDN4AQK1A','field1':cotizacion.replace(',','.'),'field2':umbral.replace(',','.')})
 	a3=urllib2.urlopen('https://api.thingspeak.com/update.json',data=datos_acceso)
 
 	time.sleep(120)

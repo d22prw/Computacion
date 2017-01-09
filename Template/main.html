@@ -9,24 +9,12 @@
    <BODY>
    <div class="encabezado"></div>
 	<br>   
-   <center> <table class="tabla">
-      <thead>
-        <tr>
-            <th>Cotización</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for n in lista %}
-        <tr>
-        <td>{{ lista[n]['Cotizacion']}}</td>
-        <td>{{ lista[n]['Fecha']}}</td>
-        <td>{{ lista[n]['Hora']}}</td>
-      </tr>
-        {% endfor %}
-      </tbody>
-    </table></center>
+   <div class="opciones">
+   	<center><p>Ver los valores de las cotizaciones</p></center>
+   	 <center><form action="valores_cotizacion">
+  <input type="submit" value="Enviar">
+  </form></center>
+  </div>
 	<br>
 <div class="opciones">
    	<center><p>Introduce el valor umbral que desee:</p></center>
