@@ -4,7 +4,7 @@
 import urllib, urllib2,re,time
 
 from pymongo import MongoClient
-client = MongoClient()
+client = MongoClient(mongodb://computaciondjuara:BUrLYH0EMvYlcGY14IXvBzxsFesiMKWZgNea2swYN9pFBq63azBTPZBoeIL3GeAisn2owLqpPrkdAsI6E5kgbw==@computaciondjuara.documents.azure.com:10250/?ssl=true)
 db = client.BBDD
 
 buscar_umbral = '<div class="difP top center">(.*)</div>'
