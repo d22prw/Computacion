@@ -3,7 +3,7 @@
 #-*- coding: utf-8-*-
 from pymongo import MongoClient
 import urllib2, json
-client = MongoClient()
+client = MongoClient('mongodb://computaciondjuara:BUrLYH0EMvYlcGY14IXvBzxsFesiMKWZgNea2swYN9pFBq63azBTPZBoeIL3GeAisn2owLqpPrkdAsI6E5kgbw==@computaciondjuara.documents.azure.com:10250/?ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.BBDD
 
 from flask import Flask,session,render_template,url_for,request,redirect,Response,json
@@ -84,13 +84,13 @@ def login():
 	usuariosycontrasenas = db.users.find({})
 	print(usuariosycontrasenas)
 	userpass= 0
-	for userpass in usuariosycontrasenas:
+	#for userpass in usuariosycontrasenas:
 	#if((str(usuario)=='admin')and(str(contrasena)=='1234')):
 	#if(existe != None):
-		if((userpass['Usuario']==str(usuario))and(userpass['Contrasena']==str(contrasena))):
-			return render_template('main.html')
-		else:
-			return render_template('login.html')
+	#	if((userpass['Usuario']==str(usuario))and(userpass['Contrasena']==str(contrasena))):
+	return render_template('main.html')
+	#	else:
+	#		return render_template('login.html')
 
 @app.route('/main')
 def principal():
