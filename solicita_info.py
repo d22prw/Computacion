@@ -1,15 +1,14 @@
-
  #!/usr/local/bin/python
 
 import urllib, urllib2,re,time
 
 from pymongo import MongoClient
-client = MongoClient()
+client = MongoClient('mongodb://computaciondjuara:BUrLYH0EMvYlcGY14IXvBzxsFesiMKWZgNea2swYN9pFBq63azBTPZBoeIL3GeAisn2owLqpPrkdAsI6E5kgbw==@computaciondjuara.documents.azure.com:10250/?ssl=true&ssl_cert_reqs=CERT_NONE')
 db = client.BBDD
 
 buscar_umbral = '<div class="difP top center">(.*)</div>'
 buscar_cotizacion = '<div class="price top center">(.*)</div>'
-buscar_fecha = '<td class="date center">(.*)</td>'
+buscar_fecha = '<td class="date">(.*)</td>'
 buscar_hora = '<div class="time left">(.*)</div>'
 
 prueba = 0
